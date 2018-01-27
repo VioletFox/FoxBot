@@ -1,11 +1,17 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
+commands = {
+  '!video': {
+    execute: getVideo,
+    description: 'get a youtube video by search word'
+  },
+
 const config = require("./config.json")
 
 client.on("ready", () => {
 	console.log(`Foxbot is ready to bite`);
-	client.user.setActivity(`!commands`);
+	client.user.setActivity(`why?`);
 });
 
 client.on("message", message => {
