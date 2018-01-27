@@ -1,17 +1,11 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-commands = {
-  '!video': {
-    execute: getVideo,
-    description: 'get a youtube video by search word'
-  },
-
 const config = require("./config.json")
 
 client.on("ready", () => {
-	console.log(`Foxbot is ready to bite`);
-	client.user.setActivity(`why?`);
+	console.log(`Foxbot loaded into memory but VAC won't care anyways`);
+	client.user.setActivity(`Hello bois`);
 });
 
 client.on("message", message => {
@@ -22,11 +16,11 @@ client.on("message", message => {
 	const command = args.shift().toLowerCase();
 
 	try {
-		let commandFile = require(`./${command}.js`);
+		let commandFile = require(`./commands/${command}.js`);
 		commandFile.run(client, message, args);
 	} catch (err) {
 		console.error(err);
 	}
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(client.env.TOKEN);
